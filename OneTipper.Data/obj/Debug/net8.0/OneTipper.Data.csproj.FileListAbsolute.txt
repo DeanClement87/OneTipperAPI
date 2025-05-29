@@ -1,0 +1,14 @@
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\bin\Debug\net8.0\OneTipper.Data.deps.json
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\bin\Debug\net8.0\OneTipper.Data.runtimeconfig.json
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\bin\Debug\net8.0\OneTipper.Data.dll
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\bin\Debug\net8.0\OneTipper.Data.pdb
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\OneTipper.Data.csproj.AssemblyReference.cache
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\OneTipper.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\OneTipper.Data.AssemblyInfoInputs.cache
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\OneTipper.Data.AssemblyInfo.cs
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\OneTipper.Data.csproj.CoreCompileInputs.cache
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\OneTipper.Data.dll
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\refint\OneTipper.Data.dll
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\OneTipper.Data.pdb
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\OneTipper.Data.genruntimeconfig.cache
+C:\Users\Donef\source\repos\OneTipperApiFunction\OneTipper.Data\obj\Debug\net8.0\ref\OneTipper.Data.dll
