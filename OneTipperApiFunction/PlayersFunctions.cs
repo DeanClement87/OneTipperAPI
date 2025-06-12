@@ -17,13 +17,15 @@ public class PlayersFunctions
     private readonly IRepository<Season> _seasonRepository;
     private readonly IRoundRepository _roundRepository;
     private readonly ITipRepository _tipRepository;
+    private readonly ICoverageRepostory _coverageRepository;
 
     public PlayersFunctions(IPlayerRepository repository,
         ISetupPlayerCoverage setupPlayerCoverage,
         IScoreCalculator scoreCalculator,
         IRepository<Season> seasonRepository,
         IRoundRepository roundRepository,
-        ITipRepository tipRepository)
+        ITipRepository tipRepository,
+        ICoverageRepostory coverageRepository)
     {
         _repository = repository;
         _setupPlayerCoverage = setupPlayerCoverage;
@@ -31,6 +33,7 @@ public class PlayersFunctions
         _seasonRepository = seasonRepository;
         _roundRepository = roundRepository;
         _tipRepository = tipRepository;
+        _coverageRepository = coverageRepository;
     }
 
     [Function("GetAllPlayers")]
@@ -171,7 +174,7 @@ public class PlayersFunctions
     public async Task<HttpResponseData> GetPlayerByPin(
     [HttpTrigger(AuthorizationLevel.Function, "get", Route = "players/pin/{pin:int}")] HttpRequestData req, int pin)
     {
-        var player = await _repository.GetPlayerByPinAsync(pin); 
+        var player = await _repository.GetPlayerByPinAsync(pin);
         var response = req.CreateResponse();
 
         if (player == null)
@@ -189,7 +192,7 @@ public class PlayersFunctions
 
         //Get Current Tip
         var currentTip = await _tipRepository.GetTipByPlayerAndRoundAsync(player.Id, liveSeason.CurrentRoundId);
-        if (currentTip != null)   
+        if (currentTip != null)
             playerDto.CurrentTip = new TipDTO(currentTip);
 
         response.StatusCode = HttpStatusCode.OK;
@@ -222,6 +225,31 @@ public class PlayersFunctions
 
             await _repository.UpdateAsync(player);
 
+        }
+
+        var response = req.CreateResponse(HttpStatusCode.Created);
+
+        return response;
+    }
+
+    [Function("CountCoverage")]
+    public async Task<HttpResponseData> CountCoverage(
+    [HttpTrigger(AuthorizationLevel.Function, "post", Route = "players/countcoverage")] HttpRequestData req)
+    {
+        var players = await _repository.GetAllAsync();
+
+        foreach (var playerx in players)
+        {
+            var player = await _repository.GetByIdAsync(playerx.Id);
+            var tips = await _tipRepository.GetTipsByPlayerAsync(player.Id);
+
+            foreach (var tip in tips)
+            {
+                var coverage = await _coverageRepository.GetByPlayerAndTeamAsync(playerx.Id, tip.Team.Id);
+                coverage.TipCount += 1;
+                await _coverageRepository.UpdateAsync(coverage);
+
+            }
         }
 
         var response = req.CreateResponse(HttpStatusCode.Created);
